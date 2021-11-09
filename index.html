@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>My Library</title>
+</head>
+
+<body>
+    <div class="header">
+        <button id="add-book">Add Book</button>
+        <h1><span contenteditable>Araeek</span>'s Library</h1>
+        <div class="right"></div>
+    </div>
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-form">
+                <h4>Add Book</h4>
+                <form class='add-book-form'>
+                    <div class="input-section">
+                        <label for="book-name">Name</label>
+                        <input type="text" id="book-name" required>
+                    </div>
+                    <div class="input-section">
+                        <label for="book-author">Author</label>
+                        <input type="text" id="book-author" required>
+                    </div>
+                    <div class="input-section number-section">
+                        <label for="book-pages">No. of Pages:</label>
+                        <input type="number" id="book-pages" required>
+                    </div>
+                    <div class="input-section cover-section">
+                        <label for="book-cover">Cover Image:</label>
+                        <input type="button" value="Browse" id="img-btn">
+                        <input type="file" id="book-cover" accept="image/png, image/jpeg" required>
+                    </div>
+                    <img id="form-book-cover" src="" alt="">
+                    <div class="read-section">
+                        <input class="form-read" type="checkbox" id="book-read">
+                        <label class="form-read-label" for="book-read">Read?</label>
+                    </div>
+                    <button class="form-button">Add</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="items">
+            
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
