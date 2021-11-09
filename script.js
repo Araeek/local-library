@@ -7,6 +7,7 @@ const modal = document.querySelector("#add-modal");
 const addBookBtn = document.querySelector("#add-book");
 const modalCloseBtn = document.querySelector(".modal-close");
 const items = document.querySelector(".items");
+const libraryName = document.querySelector(".library-name");
 
 function Book(title, author, pages, cover, read) {
   this.title = title;
@@ -17,6 +18,8 @@ function Book(title, author, pages, cover, read) {
 }
 
 let myLibrary = JSON.parse(localStorage.getItem("library")) || [];
+libraryName.textContent =
+  localStorage.getItem("name") || "Click to enter your name";
 
 function addBook(e) {
   e.preventDefault();
@@ -89,6 +92,9 @@ function renderLibrary(library, items) {
 addBookForm.addEventListener("submit", addBook);
 items.addEventListener("click", removeBook);
 items.addEventListener("click", toggleRead);
+libraryName.addEventListener("input", () => {
+  localStorage.setItem("name", libraryName.textContent);
+});
 
 renderLibrary(myLibrary, bookshelf);
 
@@ -101,7 +107,7 @@ imgCoverSelect.addEventListener("click", () => {
 
 inputButton.addEventListener("change", () => {
   const reader = new FileReader();
-  reader.readAsDataURL(inputButton.files[0])
+  reader.readAsDataURL(inputButton.files[0]);
   reader.addEventListener("load", () => {
     formCoverPlaceholder.src = reader.result;
   });
