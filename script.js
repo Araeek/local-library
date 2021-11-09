@@ -16,7 +16,7 @@ function Book(title, author, pages, cover, read) {
   this.read = read;
 }
 
-let myLibrary = JSON.parse(localStorage.getItem('library')) || [];;
+let myLibrary = JSON.parse(localStorage.getItem("library")) || [];
 
 function addBook(e) {
   e.preventDefault();
@@ -35,7 +35,7 @@ function addBook(e) {
   modal.style.display = "none";
   addBookToLibrary(newBook);
   renderLibrary(myLibrary, bookshelf);
-  localStorage.setItem('library', JSON.stringify(myLibrary));
+  localStorage.setItem("library", JSON.stringify(myLibrary));
   this.reset();
   formCoverPlaceholder.src = "";
 }
@@ -49,14 +49,14 @@ function removeBook(e) {
   const itemToRemove = e.target.closest(".item").dataset.index;
   myLibrary.splice(itemToRemove, 1);
   renderLibrary(myLibrary, bookshelf);
-  localStorage.setItem('library', JSON.stringify(myLibrary));
+  localStorage.setItem("library", JSON.stringify(myLibrary));
 }
 
 function toggleRead(e) {
   if (!e.target.matches(".read-label")) return;
   const itemToRead = e.target.closest(".item").dataset.index;
   myLibrary[itemToRead].read = !myLibrary[itemToRead].read;
-  localStorage.setItem('library~', JSON.stringify(myLibrary));
+  localStorage.setItem("library", JSON.stringify(myLibrary));
 }
 
 function renderLibrary(library, items) {
@@ -100,8 +100,11 @@ imgCoverSelect.addEventListener("click", () => {
 });
 
 inputButton.addEventListener("change", () => {
-  let value = inputButton.files[0];
-  formCoverPlaceholder.src = URL.createObjectURL(value);
+  const reader = new FileReader();
+  reader.readAsDataURL(inputButton.files[0])
+  reader.addEventListener("load", () => {
+    formCoverPlaceholder.src = reader.result;
+  });
 });
 
 //#########################################################
